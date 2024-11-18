@@ -3,17 +3,18 @@ name: Build Project
 on:
   push:
     branches:
-      - main  # You can change this if you're working with another branch
+      - main
 
 jobs:
   build:
-    runs-on: windows-latest  # This will use a Windows runner for building the project
+    runs-on: windows-latest  # This ensures it runs on GitHub's Windows hosted runner
+    
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # This step checks out your code
+        uses: actions/checkout@v3
 
       - name: Set up MSBuild
-        uses: microsoft/setup-msbuild@v1  # This sets up MSBuild to build the solution
+        uses: microsoft/setup-msbuild@v1
 
       - name: Build solution
-        run: msbuild HighFPSFix.sln /p:Configuration=Release  # This command builds the solution in Release mode
+        run: msbuild HighFPSFix.sln /p:Configuration=Release
